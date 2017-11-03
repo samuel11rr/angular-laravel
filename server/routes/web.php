@@ -16,11 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/prueba', function () {
-    return 'Esto viene desde laravel';
+    return 'Esto viene desde laravel via GET';
 });
 
-Route::get('/peticionpost', function () {
-    return Input::all();
-});
-
-// Route::get('/prueba', 'Controlador@funcion');
+Route::post('/peticionpost', 'PruebasController@index');

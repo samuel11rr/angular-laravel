@@ -11,14 +11,22 @@ app.controller('pruebaCtrl', function ($scope, $http) {
     $scope.peticionPOST = function () {
 		$http({
 			method: 'POST', 
-			url: '../server/public/prueba'
-		}).then(function(data, status, headers, config) {
+			url: '../server/public/peticionpost',
+            contentType: 'application/json', 
+            dataType: "json", 
+			data: {
+					dato1: 'prueba',
+					dato2: 'otra prueba'
+					}
+		}).then(function (data, status, headers, config) {
 			console.log(data);
 			alert(data.data);
-		}).error(function(data, status, headers, config) {
-			alert("Ha fallado la petición. Estado HTTP: "+status);
-		});
+        }).catch(function (Object) {
+               alert(Object.data);
+           });
     }
 
     $scope.peticionGET();
+    $scope.peticionPOST();
+
 });
